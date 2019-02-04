@@ -1,0 +1,293 @@
+%\title{math330-GI-10}
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fancyhdr}
+\usepackage{fullpage}      % use 1 inch margins
+\usepackage{graphicx}
+\usepackage{amsmath}       % I think this gives me some symbols
+\usepackage{amsthm}        % Does theorem stuff
+\usepackage{amssymb}       % more symbols and fonts
+\usepackage{empheq}        % Some more extensible arrows, like \xmapsto
+\usepackage{enumitem}       % fancy item numbering options
+\usepackage{tasks}
+
+\usepackage{booktabs}     % Fancy tables, as in books
+\usepackage{calligra}     % Fancy calligraphic font
+
+% Enhanced matrix environments. Use [rrr|r] after {bmatrix} for example
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% Fix spacing when using ~ as logical negation
+\newcommand{\simnot}{\mathord{\sim}}
+
+
+\setlength{\parindent}{0 in}  % don't indent first line of a paragraph
+\setlength{\parskip}{0.1in}   % put a little vertical space between paragraphs
+
+ 
+%%%%%%%%%%%%%%%%%%%%% theorem-like headings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{question}{Question}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{corollary}{Corollary}
+\newcommand{\prop}[2]{\setcounter{theorem}{#1}\begin{proposition} {#2} \end{proposition}}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+\newtheorem*{example}{Example}
+\newtheorem*{fact}{Fact}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{claim}{Claim}
+\newtheorem*{answer}{Answer}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+\noindent
+\textbf{Math 330 Fall 2018 \hfill Guided Inquiry \#10 \hfill Fri 2019-02-08}
+
+\vspace*{0.25cm}
+
+\hrulefill\\
+
+{\large\textbf{Objectives:} Section 2.6 -- Induction I}
+\begin{itemize}
+   \item Begin understanding, and using, proofs by mathematical induction.
+   
+   \item Study examples of proof by induction.
+   
+   \item Begin practicing a standard format for induction proofs.
+         
+\end{itemize}
+
+\ \hrulefill
+
+\textbf{\large Pre-Class Inquiry:}\hfill \\
+\begin{itemize}
+    \item \textbf{At the beginning of class, hand in the
+        iCEs \#$\mathbf{2.25}$ -- $\mathbf{2.28}$.}
+\end{itemize}
+        
+
+\begin{enumerate}
+    \item Induction is often, but not necessarily, used to prove certain statements of the logical form $(\forall n\in\mathbb{N})[P(n)]$. Depending on the form of the predicate $P(n)$, we might be able to use the knowledge that previous instances of $P(n)$ are true to prove a new instance is also true. That is, if we knew that $P(1)$, $P(2)$, and $P(3)$ were true, then the truth of $P(n)$ can be proven using that knowledge. Often, we only need the immediate previous case.
+    \textbf{ The key idea is that exactly the same form of reasoning to prove a specific case of $\mathbf{P(n)}$ is true may be used to prove the next case too.} We have actually seen this idea in section $1.3$ on \textit{Inductive Reasoning}. The fundamental rationale for why mathematical induction works is that at no time do we actually know an infinite number of things are true. But, implicitly we could reach the truth of any particular $P(n)$ by stepping up to it one statement at a time. So, in ancient greek terms, we have proven an \textit{implicit infinity} of things, but not an \textit{actual infinity}.
+    
+    The question of when, or for what theorems, a proof by mathematical induction might work is not easy to answer in general. This is the topic in the second part of section $2.6$. But, I can say that, with practice, you will come to recognize certain forms of theorems that could be proven by induction. For example, in section $1.3$ you used the inductive idea to prove that any specific Fibonacci number $f_n$ may be written in the form of an explicit expression:
+    \[
+      f_n = \frac{\phi^n-(1-\phi)^n}{\sqrt{5}},
+    \]
+   where $\phi$ is the golden ratio. You should go back to your work in section $1.3$ to review the idea and process. The reason you could use induction, i.e.~exactly the same reasoning, in the iCE exercise is that the Fibonacci numbers themselves are given inductively, or more commonly, recursively, a new instance of $f_n$ is defined in terms of previous instances, (see in iCE exercise $1.2$):
+   \[
+     f_{n+1} = f_{n} +f_{n-1}.
+   \]
+   \textbf{Go back to section $1.3$ and carefully study the form of the proof
+   given for Proposition $1.4$.}
+
+    \item {\bfseries iCE Theorem $2.11$.} After studying the proof of proposition $1.4$, study the proof of theorem $2.11$. At first, do not worry about the reasoning, that is the context. First, observe that the logical form of the proof is the same as for the proposition. Once you have understood that, then you should move onto the second step: understand the rationale why each step in the proof is true.
+    
+    \item {\bfseries iCE Exercise $2.25$:} Here, you are extending the \textit{base cases} that lie at the beginning of the proof of theorem $2.12$:
+    \begin{center}
+         For all non-negative integers $n$, $7^n - 1$ is a multiple of $6$.
+    \end{center}
+    In this example, the predicate $P(n)$ is ``$7^n-1$ is divisible by $6$''.
+    As you prove that $P(2)$ and $P(3)$ are true, try to find a way to express both proof processes in the exact same language, or sequence of steps. You are creating the \textit{induction step} used in the given proof of theorem $2.11$. See if your sequence of steps, or calculations, is the same as the one given. If not, go back to your explanations of why $P(2)$ and $P(3)$ are true and see if you can reword them to somewhat match. Finally, study the \textbf{form of the proof} given, comparing it to that of theorem $2.11$. Only after you've seen the proofs are identical in format, study the rationale for each step or statement in the proof of theorem $2.12$. Now, you should be able to do the next exercise.
+    
+    
+    \item {\bfseries iCE Exercise $2.26$:} Write a sentence identifying where the \textit{inductive assumption}, or \textit{inductive hypothesis}, is used. By describing it to yourself, or better, to someone else, you will really understand how mathematical induction works.
+    
+    \item {\bfseries iCE Figure $3$:} You should recognize that this template for a proof by mathematical induction is stronger than the proofs you have already seen. In those, we did not need to use the truth of \textbf{all} the previous statements to establish the truth of a new statement. What you discerned by studying examples of such proofs is simpler format that often, but not always, works. Now, that you know, and can recognize, the simple format, and perhaps the stronger format, you will be able to concentrate on the rationales used in any particular proof by induction you construct yourself.
+    
+    The comment after figure $3$ is particularly important. It relates the differences in detail between some induction proofs. You should contemplate the \textbf{general} format and intent in any induction proof. You won't be able to slavishly, or robotically, follow the exact wording or numerical details of any one template in any induction proof you try to create.
+    
+    \item {\bfseries iCE Exercise $2.27$:} Now that you are thinking about the general idea, and format, of a proof by induction, you should be able to modify the \textit{strong induction} template shown in figure $3$ to create a \textit{simple induction} template. You new template will probably be too specific, but you should be able to modify it as needed.
+    
+    \item {\bfseries iCE Exercise $2.28$:} The first part of this exercise is just trying to get you to think about how weird the prime factorization of a sequence of numbers is. You should see that there is probably not much of a discernible pattern to the size or values in the sequence of factorizations. For the second part, the authors want you to make specific comments on which statements in the proof match which parts of the strong induction template.
+    
+    As an aside, see if you can find the first number of the form
+    \[
+     N= p_1p_2p_3\cdots p_n +1
+    \]
+    that is \textbf{not} prime, where $p_1=2$, $p_2=3$, $p_3=5$, etc.~are the sequence of primes. That is, find $n$ so that, for the first $n$ primes
+    $p_1,p_2,\ldots,p_n$, the number $N=p_1p_2p_3\cdots p_n +1$ is composite.
+    
+    \item {\bfseries iCE Proposition $2.13$:} This proposition demonstrates the wide use we make of proof by induction. If you have taken Discrete Mathematics, you might have counted the number of possible outcomes when five coins are flipped. Or, the number of ``words'' that could be formed using five letters of the (English) alphabet. The proposition proves, using induction, the general principle you came to rely on in solving combinatorical problems.
+    
+    Again, study the proof, looking for an inductive format. Then, marvel at the details of the rationale!
+    
+\end{enumerate}
+
+% \vfill
+% \newpage
+
+\hrulefill\\
+
+\textbf{\large In-Class Inquiry:}
+\begin{itemize}
+    \item \textbf{At the beginning of class, after any quick questions, hand in your pre-Class inquiry work.}
+    
+    \item \textbf{In-class Inquiry Problems: EoC \#$2.61$, $2.62$, 
+    $2.64$, and $2.65$.}
+    
+    \item \textbf{Homework \#10: EoC Exercise \#$2.66$, due Wed 2019-02-13}
+          
+\end{itemize}
+
+\textbf{At the beginning of class, after any quick questions, hand in your pre-class inquiry work.}
+
+I will ask for questions or comments about section $2.5$. We will briefly discuss any that come up. This might mean that I won't really answer your questions, but the class as a whole will answer. Or, I might ask leading, Socratic type, questions in return. You may make quick changes to your pre-class inquiry work at this time. Then, I'll ask you to hand it in.
+
+Before class, you should really take the advice of the authors and go back to chapter $1$ to use induction to prove exercises $1.24$, $1.45$, $1.46$, $1.48$, $1.49$, and $1,51$. I'll ask for presentations of some of these as we start working in class. Even though we already know one way to prove the statements of these exercises, we want to practice induction on familiar results. 
+
+
+We will work on the End-of-Chapter (EoC) Exercises listed above. Please be familiar with the statements of those problems, that is, try to understand what the problem is asking you to do.  If you are inspired, you might try to solve or prove an exercise or two, as appropriate. 
+
+Here are some ideas for the EoC exercises from chapter $1$ and $2.61$ through $2.66$ from chapter $2$.
+\begin{enumerate}
+    \item {\bfseries EoC Exercise $1.45$:} Let $f_n$ denote the $n$th Fibonacci number, where $f_0=0$, $f_1=1$, and $f_{n+1}=f_n+f_{n-1}$ for $n\geq 1$. Prove the following two summation formulas:
+    \begin{enumerate}
+        \item[(a)]  For all $n\in\mathbb{N}$, we have
+            $\sum_{i=0}^{n-1} f_{2i+1} = f_{2n}$, and
+        \item[(b)] For all $n\in\mathbb{N}$, we have
+            $1 + \sum_{i=0}^n f_{2i} = f_{2n+1}$.
+    \end{enumerate}
+    You may have done some problems like this in Discrete Mathematics. You can use the methods you learned there, but let me give you another, (nonstandard), idea. Let's turn each summation problem into a recurrence problem. For (a), consider two sequential instances of the desired summation:
+    \[
+        \sum_{i=0}^{n-1} f_{2i+1} = f_{2n}, \text{ and }
+        \sum_{i=0}^{n} f_{2i+1} = f_{2(n+1)}.
+    \]
+    The second summation contains the first one plus an extra term:
+    \begin{equation}\label{eqn:sum f_(2i+1)}
+         \sum_{i=0}^{n} f_{2i+1} = \sum_{i=0}^{n-1} f_{2i+1} +f_{2n+1}.
+    \end{equation}
+    If we give a name to our sequence of summations, such as
+    \[
+        g_n = \sum_{i=0}^{n-1} f_{2i+1},
+    \] 
+    then we can rewrite equation \eqref{eqn:sum f_(2i+1)} as
+    \begin{equation}\label{eqn: g_(n+1)=g_n+f_(2n+1)}
+        g_{n+1} = g_n + f_{2n+1}.
+    \end{equation}
+    Our goal is to prove that $g_n = f_{2n}$, for all $n\in\mathbb{N}$.
+    Now, a mathematical induction proof will have a base case of
+    $g_1=f_2$, which you should be able to provide a short justification as
+    to why that is true. It is in the induction step that the advantage of
+    using the $g_n$ recursion in equation \eqref{eqn: g_(n+1)=g_n+f_(2n+1)}
+    appears. The induction assumption, (also known as the induction
+    hypothesis), is
+    \textbf{Suppose we knew, for some specific $\mathbf{N\geq 1,\ 
+    g_N=f_{2N}}$}. The induction step then becomes: \textbf{Knowing that
+    $\mathbf{g_N-f_{2N}}$ we can use equation \eqref{eqn:
+    g_(n+1)=g_n+f_(2n+1)} to  give us that}
+    \begin{equation}\label{eqn: g_(N+1) = f_(2N+2)}
+        g_{N+1} = g_n+f_{2N+1} = f_{2N} + f_{2N+1} = f_{2N+2},
+    \end{equation}
+    where the last equality is from the recursive definition for the
+    Fibonacci numbers: $f_{n+1}=f_n+f_{n-1}$. Note that we should interpret
+    this definition a ``the next Fibonacci number is the sum of the previous
+    two.'' Don't insist on the literal use of $n+1$, $n$ and $n-1$ in the
+    subscripts. Finally, from equation \eqref{eqn: g_(N+1) = f_(2N+2)}, we
+    have that $\mathbf{g_{N+1}=f_{2(N+1)}}$. This is the end of the induction
+    step, so we invoke the principle of mathematical induction to say
+    \[
+      \sum_{i=0}^{n-1} f_{2i+1} = g_n = f_{2n},\text{ for all $n\geq 1$ is
+                                                      true.}
+    \]
+    
+    For $1.45(b)$, you could try the same strategy as for (a). Some students
+    find this nonstandard method of dealing with summation proofs a bit more
+    acceptable than the usual one. Its advantage is that you explicitly see,
+    and use, the relationship between two adjacent instances of the summation
+    when you use the new recurrence, such as equation \eqref{eqn:
+    g_(n+1)=g_n+f_(2n+1)}.
+    
+    \item {\bfseries EoC Exercise $2.61$:} 
+    \begin{center}
+        \textit{The number of ways to write $n$ and an order sum of $1$s and
+        $2$s is \hbox to 1in{\hrulefill}.}
+    \end{center}
+    You will need your work in solving exercises 1.5 and 2.34. In the process
+    of working those problems, you should have generated a conjecture about a
+    formula in terms of $n$ for the number or ways. Moreover, you should have
+    already found the key induction step you need to complete a proof by
+    induction for your formula.
+    
+    \item {\bfseries EoC Exercise $2.62$:} The first problem solving strategy
+    for this one is to draw pictures for $n=3,4,5$. What your are looking for
+    is a way to use one picture to get to the next, in some way. Again, don't
+    be too literal about what your pictures look like. Take a general view of
+    how a convex $n$-gon may be drawn.
+    
+    \item {\bfseries EoC Exercise $2.64$:} Since this claim, 
+    $\sum_{i=1}^{2^n} 1/i \geq 1 + n/2$ for $n\geq 0$, has an inequality
+    rather than an equality, as in exercise 1.45, the problem solving
+    strategy is slightly different. The key idea to any proof by induction is
+    to find the
+    connection between the induction assumption, (hypothesis), and the
+    induction conclusion. There is usually one key statement in the induction
+    step that makes the connection. In the case of a summation involving an
+    inequality, we can often identify the key statement by using the fact
+    that we know where the induction step starts and ends and subtract the
+    first from the later. In this problem, the induction assumption is
+    \textbf{Suppose we knew, for a specific $\mathbf{N\geq0}$, that
+    $\mathbf{\sum_{i=1}^{2^N} 1/n \geq 1+N/2.}$} And, the induction
+    conclusion is
+    $\mathbf{\sum_{i=1}^{2^{N+1}} 1/i \geq 1 + (N+1)/2.}$ If we subtract both
+    sides of the inequalities,
+    \[
+        \sum_{i=1}^{2^{N+1}} \frac{1}{i} - \sum_{i=1}^{2^N} \frac{1}{i}
+         \geq \left(1+\frac{1}{N+1} \right) - \left(1+\frac{1}{N} \right),
+    \]
+    and simplify each side individually, we will find the heart of the
+    induction step. In this case, it will be a new, simpler inequality. It is
+    this new inequality that you have to figure out why it is true. Once
+    you've done that, the whole proof by induction can be written down
+    following the basic template. You might want to use the name-the-summation method by doing something like
+    \[
+        g_n= \sum_{i=1}^{2^n} \frac{1}{i},
+    \]
+    but it is not strictly necessary.
+    
+    \item {\bfseries EoC Exercise $2.65$:} This is another summation equality problem. You could use the method of naming the summation., as in
+    \[
+        h_n = \sum_{i=1}^n = 1 + 2 + \cdots + n. 
+    \]
+    Whether you do this or not, the strategy of subtracting the induction assumption equality from the induction conclusion equality, for a specific $N\geq1$, could again give you the fundamental connection between the two equalities.
+    
+\end{enumerate}
+
+\hrulefill\\
+
+\textbf{\large Post-class Inquiry:}
+\begin{itemize}
+    \item \textbf{Homework \#10: EoC Exercise $2.66)$, due Wed February
+                                                                13.}
+\end{itemize}
+\textit{Prove that for $n\in\mathbb{N}$}
+\[
+    1+3+5+\cdots+(2n-1) = n^2.
+\]
+For convenience, you might want to express the sum of odd integers on the left as
+\[
+    \sum_{i=1}^n (2i-1),
+\]
+but it is not really necessary.
+
+
+\hrulefill\\
+
+% \textbf{\large Bonus Problem \#6: EoC Exercise \#$2.56 (c)$.}
+
+\textbf{\large No Bonus Problem this week.}
+
+\hrulefill
+\end{document}
